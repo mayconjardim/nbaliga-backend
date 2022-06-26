@@ -23,12 +23,14 @@ public class UserDTO implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.teamDTO = teamDTO;
+		
 	}
 
 	public UserDTO(User entity) {
 		id = entity.getId();
 		name = entity.getName();
 		teamDTO = new TeamDTO(entity.getTeam());
+		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
 	}
 
 	public Set<RoleDTO> getRoles() {
