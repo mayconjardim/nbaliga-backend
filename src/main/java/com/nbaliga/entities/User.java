@@ -77,6 +77,10 @@ public class User implements Serializable {
 		this.team = team;
 	}
 
+	public Team getTeam() {
+		return team;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
