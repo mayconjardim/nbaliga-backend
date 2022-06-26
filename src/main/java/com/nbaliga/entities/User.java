@@ -5,10 +5,18 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "app_user")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -19,6 +27,13 @@ public class User implements Serializable {
 	private String password;
 	private Integer teamId;
 
+
+	
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "app_user_role",
+		joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "role_id"))	
 	private Set<Role> roles = new HashSet<>();
 
 	public User() {
