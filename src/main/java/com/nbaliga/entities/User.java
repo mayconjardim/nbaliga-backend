@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,26 +26,23 @@ public class User implements Serializable {
 	private Long id;
 	private String name;
 	private String password;
-	private Integer teamId;
 
+	@OneToOne
+	@JoinColumn(name = "team_id", referencedColumnName = "id")
+	private Team team;
 
-	
-	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "app_user_role",
-		joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "role_id"))	
+	@JoinTable(name = "app_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
 	public User() {
 	}
 
-	public User(Long id, String name, String password, Integer teamId) {
+	public User(Long id, String name, String password) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		this.teamId = teamId;
 	}
 
 	public Set<Role> getRoles() {
@@ -75,12 +73,8 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Integer getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(Integer teamId) {
-		this.teamId = teamId;
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 	@Override

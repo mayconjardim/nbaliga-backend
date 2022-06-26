@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -79,6 +80,9 @@ public class Team implements Serializable {
 	private Integer divRank;
 	private Integer confRank;
 	private String arenaName;
+
+	@OneToOne(mappedBy = "team")
+	private User user;
 
 	public Team() {
 	}
@@ -163,6 +167,10 @@ public class Team implements Serializable {
 		this.divRank = divRank;
 		this.confRank = confRank;
 		this.arenaName = arenaName;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Long getId() {
