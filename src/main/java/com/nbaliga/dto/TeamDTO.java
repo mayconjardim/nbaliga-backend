@@ -73,7 +73,7 @@ public class TeamDTO implements Serializable {
 	private Integer divRank;
 	private Integer confRank;
 	private String arenaName;
-	
+
 	public TeamDTO() {
 	}
 
@@ -89,7 +89,7 @@ public class TeamDTO implements Serializable {
 			Integer allowedFta, Integer lastPlayoffYear, Boolean isHuman, Double cutSalary, Double cutSalary2,
 			Double cutSalary3, Double cutSalary4, Double cutSalary5, Double cutSalary6, Double cutSalary7,
 			Double cutSalary8, Integer usedMidException, Integer usedLowException, Double gb, Double confGb,
-			Integer divRank, Integer confRank, String arenaName) {
+			Integer divRank, Integer confRank, String arenaName, UserDTO userDTO) {
 		super();
 		this.id = id;
 		this.league = league;
@@ -158,7 +158,7 @@ public class TeamDTO implements Serializable {
 		this.confRank = confRank;
 		this.arenaName = arenaName;
 	}
-	
+
 	public TeamDTO(Team entity) {
 		id = entity.getId();
 		league = entity.getLeague();
@@ -226,6 +226,7 @@ public class TeamDTO implements Serializable {
 		divRank = entity.getDivRank();
 		confRank = entity.getConfRank();
 		arenaName = entity.getArenaName();
+
 	}
 
 	public Long getId() {
@@ -755,7 +756,5 @@ public class TeamDTO implements Serializable {
 	public void setArenaName(String arenaName) {
 		this.arenaName = arenaName;
 	}
-	
-	
-	
+
 }

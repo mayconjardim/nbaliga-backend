@@ -169,6 +169,10 @@ public class Team implements Serializable {
 		this.arenaName = arenaName;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
