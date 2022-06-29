@@ -25,7 +25,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Autowired
 	private JwtTokenStore tokenStore;
 	
-	private static final String[] PUBLIC = { "/oauth/token", "/teams/**" };
+	private static final String[] PUBLIC = { "/oauth/token", "/teams", "/standings" };
 	
 	private static final String[] OPERATOR_OR_ADMIN = { };
 	
@@ -57,7 +57,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		corsConfig.setAllowedOriginPatterns(Arrays.asList("*"));
 		corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "PATCH"));
 		corsConfig.setAllowCredentials(true);
-		corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+		corsConfig.setAllowedHeaders(Arrays.asList(
+	            "Accept", "Origin", "Content-Type", "Depth", "User-Agent", "If-Modified-Since,",
+	            "Cache-Control", "Authorization", "X-Req", "X-File-Size", "X-Requested-With", "X-File-Name"));	
 
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", corsConfig);
