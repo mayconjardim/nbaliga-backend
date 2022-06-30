@@ -22,14 +22,14 @@ public class StandingsDTO implements Serializable {
 	private Double confGb;
 	private Integer divRank;
 	private Integer confRank;
-	
-	
+	private String conference;
+
 	public StandingsDTO() {
 	}
 
 	public StandingsDTO(Long id, String name, String city, Integer streak, Integer homeWins, Integer homeLosses,
 			Integer roadWins, Integer roadLosses, Double win_, Integer points, Integer allowedPoints, Double gb,
-			Double confGb, Integer divRank, Integer confRank) {
+			Double confGb, Integer divRank, Integer confRank, String conference) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,6 +46,7 @@ public class StandingsDTO implements Serializable {
 		this.confGb = confGb;
 		this.divRank = divRank;
 		this.confRank = confRank;
+		this.conference = conference;
 	}
 
 	public StandingsDTO(Team entity) {
@@ -64,32 +65,33 @@ public class StandingsDTO implements Serializable {
 		confGb = entity.getConfGb();
 		divRank = entity.getDivRank();
 		confRank = entity.getConfRank();
+		conference = entity.getConference();
 	}
-	
+
 	public String getTeamName() {
 		return city + " " + name;
 	}
-	
+
 	public Integer getTotalWins() {
 		return homeWins + roadWins;
 	}
-	
+
 	public Integer getTotalLosses() {
 		return homeLosses + roadLosses;
 	}
-	
+
 	public Double getPF() {
-		return points / (getTotalWins().doubleValue() + getTotalLosses().doubleValue() ) + 0.0001 ;
+		return points / (getTotalWins().doubleValue() + getTotalLosses().doubleValue()) + 0.0001;
 	}
-	
+
 	public Double getPA() {
-		return allowedPoints / (getTotalWins().doubleValue() + getTotalLosses().doubleValue() ) + 0.0001 ;
+		return allowedPoints / (getTotalWins().doubleValue() + getTotalLosses().doubleValue()) + 0.0001;
 	}
-	
+
 	public Double getDiff() {
 		return getPF() - getPA();
 	}
-	
+
 	public String getStrk() {
 		if (streak > 0) {
 			return "W" + streak;
@@ -97,7 +99,7 @@ public class StandingsDTO implements Serializable {
 			return "L" + Math.abs(streak);
 		}
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -217,7 +219,13 @@ public class StandingsDTO implements Serializable {
 	public void setConfRank(Integer confRank) {
 		this.confRank = confRank;
 	}
-	
-	
+
+	public String getConference() {
+		return conference;
+	}
+
+	public void setConference(String conference) {
+		this.conference = conference;
+	}
 
 }

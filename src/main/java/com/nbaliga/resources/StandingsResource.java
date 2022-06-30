@@ -18,17 +18,11 @@ public class StandingsResource {
 	
 	@Autowired
 	private StandingsService standingsService;
+		
 	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<StandingsDTO> findById(@PathVariable long id) {
-		StandingsDTO dto = standingsService.findById(id);
-		return ResponseEntity.ok().body(dto);
-	}
-	
-	
-	@GetMapping
-	public ResponseEntity<List<StandingsDTO>> findAll() {
-		List<StandingsDTO> team = standingsService.findAll();		
+	@GetMapping(value = "/{conference}")
+	public ResponseEntity<List<StandingsDTO>> findbyConference(@PathVariable String conference) {
+		List<StandingsDTO> team = standingsService.findbyConference(conference);		
 		return ResponseEntity.ok().body(team);
 	}
 	

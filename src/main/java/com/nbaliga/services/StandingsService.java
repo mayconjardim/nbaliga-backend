@@ -27,8 +27,8 @@ public class StandingsService {
 	} 
 	
 	@Transactional(readOnly = true)
-	public List<StandingsDTO> findAll() {
-		List<Team> teams = teamRepository.findAll();
+	public List<StandingsDTO> findbyConference(String conference) {
+		List<Team> teams = teamRepository.findByConference(conference);
 		return teams.stream().map(x -> new StandingsDTO(x)).collect(Collectors.toList());
 	}
 	
