@@ -9,8 +9,12 @@ import com.nbaligabackend.entities.Team;
 
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
-	@Query("SELECT distinct obj FROM Team obj WHERE "
-			+ "obj.conference = :conference ORDER BY obj.win_")
+	@Query("SELECT distinct obj FROM Team obj WHERE ( "
+			+ "obj.conference = :conference AND obj.isHuman = 1) ORDER BY obj.win_")
 	List<Team> findByConference(String conference);
+	
+	@Query("SELECT distinct obj FROM Team obj WHERE "
+			+ "obj.isHuman = 1 ORDER BY obj.win_")
+	List<Team> listAll();
 	
 }

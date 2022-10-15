@@ -1,7 +1,6 @@
 package com.nbaligabackend.services;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +18,11 @@ public class StandingsService {
 	private TeamRepository teamRepository;
 	
 	@Transactional(readOnly = true)
-	public StandingsDTO findById(Long id) throws Exception {
-		Optional<Team> obj = teamRepository.findById(id);
-		Team entity = obj.orElseThrow( () -> new Exception("Time não encontrado"));;
-		return new StandingsDTO(entity);
-	} 
+	public List<StandingsDTO> listAll() {
+		List<Team> teams = teamRepository.listAll();
+		return teams.stream().map(x -> new StandingsDTO(x)).collect(Collectors.toList());
+	}
+	
 	
 	@Transactional(readOnly = true)
 	public List<StandingsDTO> findbyConference(String conference) {

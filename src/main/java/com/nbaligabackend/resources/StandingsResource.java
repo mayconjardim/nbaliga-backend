@@ -22,6 +22,12 @@ public class StandingsResource {
 	private StandingsService standingsService;
 		
 	
+	@GetMapping
+	public ResponseEntity<List<StandingsDTO>> listAll() {
+		List<StandingsDTO> team = standingsService.listAll();		
+		return ResponseEntity.ok().body(team);
+	}
+	
 	@GetMapping(value = "/{conference}")
 	public ResponseEntity<List<StandingsDTO>> findbyConference(@PathVariable String conference) {
 		List<StandingsDTO> team = standingsService.findbyConference(conference);		
