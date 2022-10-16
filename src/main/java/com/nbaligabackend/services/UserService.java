@@ -2,9 +2,17 @@ package com.nbaligabackend.services;
 
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +23,15 @@ import com.nbaligabackend.entities.Role;
 import com.nbaligabackend.entities.User;
 import com.nbaligabackend.repositories.RoleRepository;
 import com.nbaligabackend.repositories.UserRepository;
+import com.nbaligabackend.services.exceptions.DatabaseException;
 import com.nbaligabackend.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEconder;
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -43,11 +55,34 @@ public class UserService {
 	public UserDTO insert(UserInsertDTO dto) {
 		User entity = new User();
 		copyDtoToEntity(dto, entity);
-		entity.setPassword(dto.getPassword());
+		entity.setPassword(passwordEconder.encode(dto.getPassword()));
 		entity = userRepository.save(entity);
 		return new UserDTO(entity);
 	}
 	
+	@Transactional
+	public UserDTO update(Long id, UserDTO dto) {
+
+		try {
+			User entity = userRepository.getReferenceById(id); 
+			copyDtoToEntity(dto, entity);			
+			entity = userRepository.save(entity); 
+			return new UserDTO(entity); 
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Id não encontrado " + id);
+		}
+	}
+
+	
+	public void delete(Long id) {
+		try {
+			userRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("id não existe " + id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException("Violação de integridade no banco");
+		}
+	}
 
 	public void copyDtoToEntity(UserDTO dto, User entity) {
 
@@ -59,6 +94,15 @@ public class UserService {
 			entity.getRoles().add(role);
 		}
 
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepository.findByName(username);
+		if (user == null) {
+			throw new UsernameNotFoundException("User not found");
+		}
+		return user;
 	}
 
 }
