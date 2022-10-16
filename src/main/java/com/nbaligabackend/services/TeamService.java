@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.nbaligabackend.dto.TeamDTO;
 import com.nbaligabackend.entities.Team;
 import com.nbaligabackend.repositories.TeamRepository;
+import com.nbaligabackend.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class TeamService {
@@ -21,7 +22,7 @@ public class TeamService {
 	@Transactional(readOnly = true)
 	public TeamDTO findById(Long id) throws Exception {
 		Optional<Team> obj = teamRepository.findById(id);
-		Team entity = obj.orElseThrow( () -> new Exception("Time não encontrado"));
+		Team entity = obj.orElseThrow( () -> new ResourceNotFoundException("Time não encontrado"));
 		return new TeamDTO(entity);
 	} 
 	
