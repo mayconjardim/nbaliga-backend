@@ -90,7 +90,6 @@ public class TeamDTO implements Serializable {
 			Double cutSalary3, Double cutSalary4, Double cutSalary5, Double cutSalary6, Double cutSalary7,
 			Double cutSalary8, Integer usedMidException, Integer usedLowException, Double gb, Double confGb,
 			Integer divRank, Integer confRank, String arenaName) {
-		super();
 		this.id = id;
 		this.league = league;
 		this.cityName = cityName;

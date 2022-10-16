@@ -30,7 +30,6 @@ public class StandingsDTO implements Serializable {
 	public StandingsDTO(Long id, String name, String city, Integer streak, Integer homeWins, Integer homeLosses,
 			Integer roadWins, Integer roadLosses, Double win_, Integer points, Integer allowedPoints, Double gb,
 			Double confGb, Integer divRank, Integer confRank, String conference) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.city = city;
