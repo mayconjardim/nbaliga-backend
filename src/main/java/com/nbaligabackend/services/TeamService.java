@@ -23,7 +23,7 @@ public class TeamService {
 	public TeamDTO findById(Long id) throws Exception {
 		Optional<Team> obj = teamRepository.findById(id);
 		Team entity = obj.orElseThrow( () -> new ResourceNotFoundException("Time não encontrado"));
-		return new TeamDTO(entity);
+		return new TeamDTO(entity, entity.getPlayers());
 	} 
 	
 	@Transactional(readOnly = true)

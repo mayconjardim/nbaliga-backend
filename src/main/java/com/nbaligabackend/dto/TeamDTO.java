@@ -1,7 +1,10 @@
 package com.nbaligabackend.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.nbaligabackend.entities.Player;
 import com.nbaligabackend.entities.Team;
 
 public class TeamDTO implements Serializable {
@@ -73,6 +76,8 @@ public class TeamDTO implements Serializable {
 	private Integer divRank;
 	private Integer confRank;
 	private String arenaName;
+
+	private Set<PlayerDTO> players = new HashSet<>();
 
 	public TeamDTO() {
 	}
@@ -226,6 +231,15 @@ public class TeamDTO implements Serializable {
 		confRank = entity.getConfRank();
 		arenaName = entity.getArenaName();
 
+	}
+
+	public TeamDTO(Team entity, Set<Player> players) {
+		this(entity);
+		players.forEach(play -> this.players.add(new PlayerDTO(play)));
+	}
+
+	public Set<PlayerDTO> getPlayers() {
+		return players;
 	}
 
 	public Long getId() {

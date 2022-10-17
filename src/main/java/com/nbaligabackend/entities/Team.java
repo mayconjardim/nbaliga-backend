@@ -1,10 +1,13 @@
 package com.nbaligabackend.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -79,6 +82,9 @@ public class Team implements Serializable {
 	private Integer divRank;
 	private Integer confRank;
 	private String arenaName;
+	
+	@OneToMany(mappedBy = "currentteamid")
+	private Set<Player> players = new HashSet<>();
 
 	public Team() {
 	}
@@ -165,6 +171,10 @@ public class Team implements Serializable {
 		this.arenaName = arenaName;
 	}
 
+	public Set<Player> getPlayers() {
+		return players;
+	}
+	
 	public Long getId() {
 		return id;
 	}
