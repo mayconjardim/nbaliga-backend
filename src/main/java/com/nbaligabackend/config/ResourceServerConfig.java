@@ -33,7 +33,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	private JwtTokenStore tokenStore;
 	
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", 
-			"/teams/**", "/players/**", "/standings/**", "/transactions/**", "/champs/**" };
+			"/teams/**", "/players/**", "/standings/**", "/transactions/**", "/champs/**", "/schedule/**"  };
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
