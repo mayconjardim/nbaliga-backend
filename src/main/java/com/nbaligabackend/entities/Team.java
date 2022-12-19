@@ -82,7 +82,7 @@ public class Team implements Serializable {
 	private Integer divRank;
 	private Integer confRank;
 	private String arenaName;
-	
+
 	@OneToMany(mappedBy = "currentteamid")
 	private Set<Player> players = new HashSet<>();
 
@@ -174,7 +174,7 @@ public class Team implements Serializable {
 	public Set<Player> getPlayers() {
 		return players;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}

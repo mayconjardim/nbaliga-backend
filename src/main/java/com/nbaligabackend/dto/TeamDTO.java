@@ -242,6 +242,22 @@ public class TeamDTO implements Serializable {
 		return players;
 	}
 
+	public Double getPpg() {
+		return points / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+	}
+
+	public Double getOppg() {
+		return allowedPoints / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+	}
+
+	public Double getRpg() {
+		return  rebounds / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+	}
+
+	public Double getApg() {
+		return assists / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+	}
+
 	public Long getId() {
 		return id;
 	}

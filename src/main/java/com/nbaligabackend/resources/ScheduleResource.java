@@ -19,7 +19,7 @@ public class ScheduleResource {
 	private ScheduleService scheduleService;
 		
 	
-	@GetMapping
+	@GetMapping(value = "/results")
 	public ResponseEntity<Page<ScheduleDTO>> listAll(Pageable pageable) {
 		Page<ScheduleDTO> schedule = scheduleService.listAll(pageable);		
 		return ResponseEntity.ok().body(schedule);
