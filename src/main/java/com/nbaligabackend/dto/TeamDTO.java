@@ -257,6 +257,14 @@ public class TeamDTO implements Serializable {
 	public Double getApg() {
 		return assists / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
 	}
+	
+	public String getStrk() {
+		if (streak > 0) {
+			return "W" + streak;
+		} else {
+			return "L" + Math.abs(streak);
+		}
+	}
 
 	public Long getId() {
 		return id;

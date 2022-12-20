@@ -201,13 +201,13 @@ public class PlayerDTO implements Serializable {
 		this.id = entity.getId();
 		this.firstname = entity.getFirstname();
 		this.lastname = entity.getLastname();
-		this.name = entity.getLastname();
+		this.name = entity.getName();
 		this.height = entity.getHeight();
 		this.weight = entity.getWeight();
-		this.age = entity.getWeight();
+		this.age = entity.getAge();
 		this.birthmonth = entity.getBirthmonth();
 		this.birthday = entity.getBirthday();
-		this.birthyear = entity.getBirdyears();
+		this.birthyear = entity.getBirthyear();
 		this.currentleague = entity.getCurrentleague();
 		this.currentleagueid = entity.getCurrentleagueid();
 		this.currentteam = entity.getCurrentteam();
@@ -281,6 +281,17 @@ public class PlayerDTO implements Serializable {
 		this.optiontype7 = entity.getOptiontype7();
 		this.optiontype8 = entity.getOptiontype8();
 		this.birdyears = entity.getBirdyears();
+	}
+
+	public Integer getContractLength() {
+		int years = 0;
+		years += (this.contract1 > 0) ? 1 : 0;
+		years += (this.contract2 > 0) ? 1 : 0;
+		years += (this.contract3 > 0) ? 1 : 0;
+		years += (this.contract4 > 0) ? 1 : 0;
+		years += (this.contract5 > 0) ? 1 : 0;
+		return years;
+
 	}
 
 	public Long getId() {
