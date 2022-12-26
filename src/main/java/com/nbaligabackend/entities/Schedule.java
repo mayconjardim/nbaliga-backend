@@ -12,6 +12,8 @@ import javax.persistence.Table;
 public class Schedule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	private String boxName;
 	private Integer day;
 	private String home;
 	private String away;
@@ -19,9 +21,6 @@ public class Schedule implements Serializable {
 	private Integer type;
 	private Integer homeScore;
 	private Integer awayScore;
-
-	@Id
-	private String boxName;
 	private Integer playerOfGameId;
 	private String playerOfGame;
 	private Integer homePointsID;

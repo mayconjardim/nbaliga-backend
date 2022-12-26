@@ -16,5 +16,9 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
 	@Query("SELECT distinct obj FROM Team obj WHERE "
 			+ "obj.isHuman = 1 ORDER BY obj.win_ DESC")
 	List<Team> listAll();
+
+	
+	
+
 	
 }

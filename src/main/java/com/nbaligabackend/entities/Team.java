@@ -85,6 +85,7 @@ public class Team implements Serializable {
 
 	@OneToMany(mappedBy = "currentteamid")
 	private Set<Player> players = new HashSet<>();
+		
 
 	public Team() {
 	}

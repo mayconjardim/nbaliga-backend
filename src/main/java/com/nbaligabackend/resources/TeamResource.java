@@ -30,5 +30,9 @@ public class TeamResource {
 		Page<TeamDTO> team = teamService.findAllPaged(pageable);
 		return ResponseEntity.ok().body(team);
 	}
+	
+
+	
+	
 
 }

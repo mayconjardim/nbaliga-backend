@@ -238,26 +238,28 @@ public class TeamDTO implements Serializable {
 		players.forEach(play -> this.players.add(new PlayerDTO(play)));
 	}
 
-	public Set<PlayerDTO> getPlayers() {
-		return players;
-	}
+	// métodos personalizados
 
 	public Double getPpg() {
-		return points / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+		return points / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+				+ roadLosses.doubleValue()) + 0.0001;
 	}
 
 	public Double getOppg() {
-		return allowedPoints / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+		return allowedPoints / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+				+ roadLosses.doubleValue()) + 0.0001;
 	}
 
 	public Double getRpg() {
-		return  rebounds / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+		return rebounds / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+				+ roadLosses.doubleValue()) + 0.0001;
 	}
 
 	public Double getApg() {
-		return assists / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue() + roadLosses.doubleValue()) + 0.0001;
+		return assists / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+				+ roadLosses.doubleValue()) + 0.0001;
 	}
-	
+
 	public String getStrk() {
 		if (streak > 0) {
 			return "W" + streak;
@@ -265,6 +267,8 @@ public class TeamDTO implements Serializable {
 			return "L" + Math.abs(streak);
 		}
 	}
+
+	// métodos default
 
 	public Long getId() {
 		return id;
@@ -792,6 +796,10 @@ public class TeamDTO implements Serializable {
 
 	public void setArenaName(String arenaName) {
 		this.arenaName = arenaName;
+	}
+
+	public Set<PlayerDTO> getPlayers() {
+		return players;
 	}
 
 }

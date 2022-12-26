@@ -18,18 +18,18 @@ public class TeamService {
 
 	@Autowired
 	private TeamRepository teamRepository;
-	
+
 	@Transactional(readOnly = true)
 	public TeamDTO findById(Long id) throws Exception {
 		Optional<Team> obj = teamRepository.findById(id);
-		Team entity = obj.orElseThrow( () -> new ResourceNotFoundException("Time não encontrado"));
+		Team entity = obj.orElseThrow(() -> new ResourceNotFoundException("Time não encontrado"));
 		return new TeamDTO(entity, entity.getPlayers());
-	} 
-	
+	}
+
 	@Transactional(readOnly = true)
 	public Page<TeamDTO> findAllPaged(Pageable pageable) {
 		Page<Team> teams = teamRepository.findAll(pageable);
 		return teams.map(x -> new TeamDTO(x));
 	}
-	
+
 }
