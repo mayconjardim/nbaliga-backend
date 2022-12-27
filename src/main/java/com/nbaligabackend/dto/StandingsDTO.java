@@ -80,22 +80,38 @@ public class StandingsDTO implements Serializable {
 	}
 
 	public Double getPF() {
-		return points / (getTotalWins().doubleValue() + getTotalLosses().doubleValue()) + 0.0001;
+		if (points > 0) {
+			return points / (getTotalWins().doubleValue() + getTotalLosses().doubleValue()) + 0.0001;
+		} else  {
+			return 0.0;
+		}
+
 	}
 
 	public Double getPA() {
-		return allowedPoints / (getTotalWins().doubleValue() + getTotalLosses().doubleValue()) + 0.0001;
+		if (points > 0) {
+			return points / (getTotalWins().doubleValue() + getTotalLosses().doubleValue()) + 0.0001;
+		} else {
+			return 0.0;
+		}
 	}
 
 	public Double getDiff() {
-		return getPF() - getPA();
+		if (getPF() > 0) {
+			return getPF() - getPA();
+		} else {
+			return 0.0;
+		}
+
 	}
 
 	public String getStrk() {
 		if (streak > 0) {
 			return "W" + streak;
-		} else {
+		} else if (streak < 0) {
 			return "L" + Math.abs(streak);
+		} else {
+			return "-";
 		}
 	}
 

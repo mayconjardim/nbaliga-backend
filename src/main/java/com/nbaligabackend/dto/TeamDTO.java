@@ -241,30 +241,51 @@ public class TeamDTO implements Serializable {
 	// métodos personalizados
 
 	public Double getPpg() {
-		return points / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
-				+ roadLosses.doubleValue()) + 0.0001;
+		if (points > 0) {
+			return points / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+					+ roadLosses.doubleValue()) + 0.0001;
+		} else {
+			return 0.0;
+		}
+
 	}
 
 	public Double getOppg() {
-		return allowedPoints / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
-				+ roadLosses.doubleValue()) + 0.0001;
+		if (allowedPoints > 0) {
+			return allowedPoints / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+					+ roadLosses.doubleValue()) + 0.0001;
+		} else {
+			return 0.0;
+		}
+
 	}
 
 	public Double getRpg() {
-		return rebounds / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
-				+ roadLosses.doubleValue()) + 0.0001;
+		if (rebounds > 0) {
+			return rebounds / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+					+ roadLosses.doubleValue()) + 0.0001;
+		} else {
+			return 0.0;
+		}
 	}
 
 	public Double getApg() {
-		return assists / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
-				+ roadLosses.doubleValue()) + 0.0001;
+		if (assists > 0) {
+			return assists / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
+					+ roadLosses.doubleValue()) + 0.0001;
+		} else {
+			return 0.0;
+		}
+
 	}
 
 	public String getStrk() {
 		if (streak > 0) {
 			return "W" + streak;
-		} else {
+		} else if (streak < 0) {
 			return "L" + Math.abs(streak);
+		} else {
+			return "-";
 		}
 	}
 
