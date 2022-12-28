@@ -32,8 +32,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Autowired
 	private JwtTokenStore tokenStore;
 	
-	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", 
-			"/teams/**", "/players/**", "/standings/**", "/transactions/**", "/champs/**", "/schedule/**", "/ranks/**"  };
+	private static final String[] PUBLIC = { "/oauth/token",
+			"/teams/**", "/players/**", "/standings/**", "/transactions/**", "/champs/**", "/schedule/**", "/ranks/**", "/stats/**"  };
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

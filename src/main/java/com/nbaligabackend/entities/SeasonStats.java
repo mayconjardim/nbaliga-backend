@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class SeasonStats implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Long id;	
 	@Id
-	private Long id;
 	private Integer season;
 	private Integer league;
 	private String team;
