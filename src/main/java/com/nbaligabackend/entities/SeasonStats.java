@@ -11,10 +11,10 @@ import javax.persistence.Table;
 @Table(name = "seasonstats")
 public class SeasonStats implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	private Long id;	
+	
 	@Id
 	private Integer season;
+	private Long id;	
 	private Integer league;
 	private String team;
 	private Integer games;

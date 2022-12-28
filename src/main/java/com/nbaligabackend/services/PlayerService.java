@@ -23,7 +23,7 @@ public class PlayerService {
 	public PlayerDTO findById(Long id) {
 		Optional<Player> obj = teamRepository.findById(id);
 		Player entity = obj.orElseThrow( () -> new ResourceNotFoundException("Jogador não encontrado!") );
-		return new PlayerDTO(entity);
+		return new PlayerDTO(entity, entity.getSeasonStats());
 	} 
 	
 	@Transactional(readOnly = true)

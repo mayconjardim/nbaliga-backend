@@ -1,8 +1,11 @@
 package com.nbaligabackend.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.nbaligabackend.entities.Player;
+import com.nbaligabackend.entities.SeasonStats;
 
 public class PlayerDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -90,6 +93,8 @@ public class PlayerDTO implements Serializable {
 	private Integer optiontype7;
 	private Integer optiontype8;
 	private Integer birdyears;
+
+	private List<SeasonStatsDTO> seasonStats = new ArrayList<>();
 
 	public PlayerDTO() {
 	}
@@ -281,6 +286,12 @@ public class PlayerDTO implements Serializable {
 		this.optiontype7 = entity.getOptiontype7();
 		this.optiontype8 = entity.getOptiontype8();
 		this.birdyears = entity.getBirdyears();
+	}
+
+	public PlayerDTO(Player entity, List<SeasonStats> seasonStats) {
+		this(entity);
+		seasonStats.forEach(stats -> this.seasonStats.add(new SeasonStatsDTO(stats)));
+
 	}
 
 	public Integer getContractLength() {
@@ -956,6 +967,10 @@ public class PlayerDTO implements Serializable {
 
 	public void setBirdyears(Integer birdyears) {
 		this.birdyears = birdyears;
+	}
+
+	public List<SeasonStatsDTO> getSeasonStats() {
+		return seasonStats;
 	}
 
 }
