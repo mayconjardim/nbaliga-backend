@@ -42,10 +42,10 @@ public class SeasonStatsDTO implements Serializable {
 	private Integer dq;
 	private Integer doubleDoubles;
 	private Integer tripleDoubles;
-	
+
 	public SeasonStatsDTO() {
 	}
-	
+
 	public SeasonStatsDTO(Long id, Integer season, Integer league, String team, Integer games, Integer gamesStarted,
 			Integer minutes, Double mpg, Integer fga, Integer fgm, Double fg_, Integer _3pa, Integer _3pm, Double _3p_,
 			Integer fta, Integer ftm, Double ft_, Integer offensiveRebounds, Integer rebounds, Double rpg,
@@ -89,7 +89,7 @@ public class SeasonStatsDTO implements Serializable {
 		this.doubleDoubles = doubleDoubles;
 		this.tripleDoubles = tripleDoubles;
 	}
-	
+
 	public SeasonStatsDTO(SeasonStats entity) {
 		this.id = entity.getId();
 		this.season = entity.getSeason();
@@ -128,6 +128,36 @@ public class SeasonStatsDTO implements Serializable {
 		this.tripleDoubles = entity.getTripleDoubles();
 	}
 
+	// Metodos personalizados
+	public Double getFga_() {
+		return this.fga.doubleValue() / this.games;
+	}
+
+	public Double getFgm_() {
+		return this.fgm.doubleValue() / this.games ;
+	}
+
+	public Double get_3pm_() {
+		return this._3pm.doubleValue() / this.games;
+	}
+
+	public Double get_3pa_() {
+		return this._3pa.doubleValue() / this.games;
+	}
+
+	public Double getFtm_() {
+		return this.ftm.doubleValue() / this.games;
+	}
+
+	public Double getFta_() {
+		return this.fta.doubleValue() / this.games;
+	}
+	
+	public Double getFouls_() {
+		return this.fouls.doubleValue() / this.games ;
+	}
+
+	// Metodos padrões
 	public Long getId() {
 		return id;
 	}
@@ -209,7 +239,7 @@ public class SeasonStatsDTO implements Serializable {
 	}
 
 	public Double getFg_() {
-		return fg_;
+		return fg_ + 0.0001;
 	}
 
 	public void setFg_(Double fg_) {
@@ -233,7 +263,7 @@ public class SeasonStatsDTO implements Serializable {
 	}
 
 	public Double get_3p_() {
-		return _3p_;
+		return _3p_ + 0.0001;
 	}
 
 	public void set_3p_(Double _3p_) {
@@ -407,9 +437,5 @@ public class SeasonStatsDTO implements Serializable {
 	public void setTripleDoubles(Integer tripleDoubles) {
 		this.tripleDoubles = tripleDoubles;
 	}
-	
-	
-	
-	
-}
 
+}
