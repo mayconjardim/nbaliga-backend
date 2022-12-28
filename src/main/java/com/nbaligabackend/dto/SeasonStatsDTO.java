@@ -1,18 +1,12 @@
-package com.nbaligabackend.entities;
+package com.nbaligabackend.dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.nbaligabackend.entities.SeasonStats;
 
-@Entity
-@Table(name = "seasonstats")
-public class SeasonStats implements Serializable {
+public class SeasonStatsDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	private Long id;
 	private Integer season;
 	private Integer league;
@@ -48,11 +42,11 @@ public class SeasonStats implements Serializable {
 	private Integer dq;
 	private Integer doubleDoubles;
 	private Integer tripleDoubles;
-
-	public SeasonStats() {
+	
+	public SeasonStatsDTO() {
 	}
-
-	public SeasonStats(Long id, Integer season, Integer league, String team, Integer games, Integer gamesStarted,
+	
+	public SeasonStatsDTO(Long id, Integer season, Integer league, String team, Integer games, Integer gamesStarted,
 			Integer minutes, Double mpg, Integer fga, Integer fgm, Double fg_, Integer _3pa, Integer _3pm, Double _3p_,
 			Integer fta, Integer ftm, Double ft_, Integer offensiveRebounds, Integer rebounds, Double rpg,
 			Integer assists, Double apg, Integer steals, Double spg, Integer blocks, Double bpg, Integer turnovers,
@@ -94,6 +88,44 @@ public class SeasonStats implements Serializable {
 		this.dq = dq;
 		this.doubleDoubles = doubleDoubles;
 		this.tripleDoubles = tripleDoubles;
+	}
+	
+	public SeasonStatsDTO(SeasonStats entity) {
+		this.id = entity.getId();
+		this.season = entity.getSeason();
+		this.league = entity.getLeague();
+		this.team = entity.getTeam();
+		this.games = entity.getGames();
+		this.gamesStarted = entity.getGamesStarted();
+		this.minutes = entity.getMinutes();
+		this.mpg = entity.getMpg();
+		this.fga = entity.getFga();
+		this.fgm = entity.getFgm();
+		this.fg_ = entity.getFg_();
+		this._3pa = entity.get_3pa();
+		this._3pm = entity.get_3pm();
+		this._3p_ = entity.get_3p_();
+		this.fta = entity.getFta();
+		this.ftm = entity.getFtm();
+		this.ft_ = entity.getFt_();
+		this.offensiveRebounds = entity.getOffensiveRebounds();
+		this.rebounds = entity.getRebounds();
+		this.rpg = entity.getRpg();
+		this.assists = entity.getAssists();
+		this.apg = entity.getApg();
+		this.steals = entity.getSteals();
+		this.spg = entity.getSpg();
+		this.blocks = entity.getBlocks();
+		this.bpg = entity.getBpg();
+		this.turnovers = entity.getTurnovers();
+		this.tpg = entity.getTpg();
+		this.points = entity.getPoints();
+		this.ppg = entity.getPpg();
+		this.fouls = entity.getFouls();
+		this.plusMinus = entity.getPlusMinus();
+		this.dq = entity.getDq();
+		this.doubleDoubles = entity.getDoubleDoubles();
+		this.tripleDoubles = entity.getTripleDoubles();
 	}
 
 	public Long getId() {
@@ -375,22 +407,9 @@ public class SeasonStats implements Serializable {
 	public void setTripleDoubles(Integer tripleDoubles) {
 		this.tripleDoubles = tripleDoubles;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SeasonStats other = (SeasonStats) obj;
-		return Objects.equals(id, other.id);
-	}
-
+	
+	
+	
+	
 }
+
