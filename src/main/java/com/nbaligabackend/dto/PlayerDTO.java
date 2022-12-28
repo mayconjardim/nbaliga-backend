@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nbaligabackend.entities.Player;
+import com.nbaligabackend.entities.PlayoffStats;
 import com.nbaligabackend.entities.SeasonStats;
 
 public class PlayerDTO implements Serializable {
@@ -95,6 +96,8 @@ public class PlayerDTO implements Serializable {
 	private Integer birdyears;
 
 	private List<SeasonStatsDTO> seasonStats = new ArrayList<>();
+
+	private List<PlayoffStatsDTO> playoffStats = new ArrayList<>();
 
 	public PlayerDTO() {
 	}
@@ -288,9 +291,10 @@ public class PlayerDTO implements Serializable {
 		this.birdyears = entity.getBirdyears();
 	}
 
-	public PlayerDTO(Player entity, List<SeasonStats> seasonStats) {
+	public PlayerDTO(Player entity, List<SeasonStats> seasonStats, List<PlayoffStats> playoffStats) {
 		this(entity);
 		seasonStats.forEach(stats -> this.seasonStats.add(new SeasonStatsDTO(stats)));
+		playoffStats.forEach(playoffstats -> this.playoffStats.add(new PlayoffStatsDTO(playoffstats)));
 
 	}
 
@@ -971,6 +975,10 @@ public class PlayerDTO implements Serializable {
 
 	public List<SeasonStatsDTO> getSeasonStats() {
 		return seasonStats;
+	}
+	
+	public List<PlayoffStatsDTO> getPlayoffStats() {
+		return playoffStats;
 	}
 
 }

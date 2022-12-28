@@ -105,6 +105,10 @@ public class Player implements Serializable {
 	@JoinColumn(name = "id", referencedColumnName = "id")
 	private List<SeasonStats> seasonStats = new ArrayList<>();
 
+	@OneToMany
+	@JoinColumn(name = "id", referencedColumnName = "id")
+	private List<PlayoffStats> playoffStats = new ArrayList<>();
+
 	public Player() {
 	}
 
@@ -877,6 +881,10 @@ public class Player implements Serializable {
 
 	public List<SeasonStats> getSeasonStats() {
 		return seasonStats;
+	}
+
+	public List<PlayoffStats> getPlayoffStats() {
+		return playoffStats;
 	}
 
 	@Override

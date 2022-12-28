@@ -94,6 +94,77 @@ public class PlayoffStatsDTO implements Serializable {
 		this.tripledoubles = entity.getTripledoubles();
 	}
 
+	// Métodos personalizados
+
+	public Double getPpgPct() {
+		return this.points.doubleValue() / this.games;
+	}
+
+	public Double getRebPct() {
+		return this.rebounds.doubleValue() / this.games;
+	}
+
+	public Double getAstPct() {
+		return this.assists.doubleValue() / this.games;
+	}
+
+	public Double getStealsPct() {
+		return this.steals.doubleValue() / this.games;
+	}
+
+	public Double getBlocksPct() {
+		return this.blocks.doubleValue() / this.games;
+	}
+
+	public Double getTurnoversPct() {
+		return this.turnovers.doubleValue() / this.games;
+	}
+
+	public Double getFoulsPct() {
+		return this.fouls.doubleValue() / this.games;
+	}
+
+	public Double getMpg() {
+		return this.minutes.doubleValue() / this.games;
+	}
+
+	public Double getFga_() {
+		return this.fga.doubleValue() / this.games;
+	}
+
+	public Double getFgm_() {
+		return this.fgm.doubleValue() / this.games;
+	}
+
+	public Double getFgPct() {
+		return this.fgm.doubleValue() / this.fga + 0.0001;
+	}
+
+	public Double get_3pa_() {
+		return this._3pa.doubleValue() / this.games + 0.0001;
+	}
+
+	public Double get_3pm_() {
+		return this._3pm.doubleValue() / this.games + 0.0001;
+	}
+
+	public Double get_3Pct() {
+		return this._3pm.doubleValue() / this._3pa + 0.0001;
+	}
+
+	public Double getfta_() {
+		return this.fta.doubleValue() / this.games;
+	}
+
+	public Double getftm_() {
+		return this.ftm.doubleValue() / this.games;
+	}
+
+	public Double getFtPct() {
+		return this.ftm.doubleValue() / this.fta + 0.0001;
+	}
+
+	// Métodos default
 	public Integer getSeason() {
 		return season;
 	}
