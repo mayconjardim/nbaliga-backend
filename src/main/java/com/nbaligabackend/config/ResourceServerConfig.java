@@ -34,7 +34,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC = { "/oauth/token",
 			"/teams/**", "/players/**", "/standings/**", "/transactions/**",
-			"/champs/**", "/schedule/**", "/ranks/**", "/stats/**", "/picks/**"};
+			"/champs/**", "/schedule/**", "/ranks/**", "/stats/**", "/picks/**" , "/seasoninfo/**"};
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
