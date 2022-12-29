@@ -7,8 +7,12 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "team")
@@ -85,7 +89,11 @@ public class Team implements Serializable {
 
 	@OneToMany(mappedBy = "currentteamid")
 	private Set<Player> players = new HashSet<>();
-		
+
+	@OneToMany
+	@JoinColumn(name = "ownedby", referencedColumnName = "name")
+	@Fetch(FetchMode.JOIN)
+	private Set<DraftPicks> picks = new HashSet<>();
 
 	public Team() {
 	}
@@ -702,6 +710,10 @@ public class Team implements Serializable {
 
 	public void setArenaName(String arenaName) {
 		this.arenaName = arenaName;
+	}
+
+	public Set<DraftPicks> getPicks() {
+		return picks;
 	}
 
 	@Override

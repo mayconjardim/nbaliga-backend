@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.nbaligabackend.entities.DraftPicks;
 import com.nbaligabackend.entities.Player;
 import com.nbaligabackend.entities.Team;
 
@@ -78,6 +79,8 @@ public class TeamDTO implements Serializable {
 	private String arenaName;
 
 	private Set<PlayerDTO> players = new HashSet<>();
+
+	private Set<DraftPicksDTO> picks = new HashSet<>();
 
 	public TeamDTO() {
 	}
@@ -233,9 +236,10 @@ public class TeamDTO implements Serializable {
 
 	}
 
-	public TeamDTO(Team entity, Set<Player> players) {
+	public TeamDTO(Team entity, Set<Player> players, Set<DraftPicks> picks) {
 		this(entity);
 		players.forEach(play -> this.players.add(new PlayerDTO(play)));
+		picks.forEach(pick -> this.picks.add(new DraftPicksDTO(pick)));
 	}
 
 	// métodos personalizados
@@ -817,6 +821,10 @@ public class TeamDTO implements Serializable {
 
 	public void setArenaName(String arenaName) {
 		this.arenaName = arenaName;
+	}
+
+	public Set<DraftPicksDTO> getPicks() {
+		return picks;
 	}
 
 	public Set<PlayerDTO> getPlayers() {
