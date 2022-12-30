@@ -1,10 +1,10 @@
 package com.nbaligabackend.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,9 +27,11 @@ public class TeamService {
 	}
 
 	@Transactional(readOnly = true)
-	public Page<TeamDTO> findAllPaged(Pageable pageable) {
-		Page<Team> teams = teamRepository.findAll(pageable);
-		return teams.map(x -> new TeamDTO(x));
+	public List<TeamDTO> listAll() {
+		List<Team> teams = teamRepository.listAll();
+		return teams.stream().map(x -> new TeamDTO(x)).collect(Collectors.toList());
 	}
+	
+	
 
 }
