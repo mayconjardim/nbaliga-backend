@@ -13,9 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.nbaligabackend.dto.PlayerBasicDTO;
 import com.nbaligabackend.dto.PlayerDTO;
 import com.nbaligabackend.entities.Player;
-import com.nbaligabackend.entities.SeasonStats;
 import com.nbaligabackend.repositories.PlayerRepository;
-import com.nbaligabackend.repositories.SeasonStatsRepository;
 import com.nbaligabackend.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -23,9 +21,6 @@ public class PlayerService {
 
 	@Autowired
 	private PlayerRepository teamRepository;
-	
-	@Autowired
-	private SeasonStatsRepository statsRepository;
 
 	@Transactional(readOnly = true)
 	public PlayerDTO findById(Long id) {
@@ -43,11 +38,8 @@ public class PlayerService {
 
 	@Transactional(readOnly = true)
 	public List<PlayerBasicDTO> findAllBasic() {
-	    List<Player> players = teamRepository.findAll();
-	    List<SeasonStats> stats = statsRepository.findAll();
-	    players.forEach(x -> x.setSeasonStats(stats));
-	    
-	    return players.stream().map(x -> new PlayerBasicDTO(x)).collect(Collectors.toList());
+		List<Player> players = teamRepository.findAll();
+		return players.stream().map(x -> new PlayerBasicDTO(x)).collect(Collectors.toList());
 	}
 
 	@Transactional(readOnly = true)

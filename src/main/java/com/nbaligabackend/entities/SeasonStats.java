@@ -102,6 +102,7 @@ public class SeasonStats implements Serializable {
 		this.tripleDoubles = tripleDoubles;
 	}
 
+	
 	public Long getId() {
 		return id;
 	}

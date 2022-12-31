@@ -160,6 +160,19 @@ public class SeasonStatsDTO implements Serializable {
 		return this.fouls.doubleValue() / this.games;
 	}
 
+	public Double getOffReb_() {
+		return this.offensiveRebounds.doubleValue() / this.games;
+	}
+	
+	public Double getDeffReb_() {
+		return this.rpg - this.getOffReb_();
+	}
+	
+	public Integer getPlusMinus_() {
+		return this.plusMinus / this.games;
+	}
+	
+	
 	public Double getPer() {
 		double per = (this.fgm.doubleValue() * 85.910 + this.steals * 53.897 + this._3pm * 51.757 + this.ftm * 46.845
 				+ this.blocks * 39.190 + this.offensiveRebounds * 39.190 + this.assists * 34.677
