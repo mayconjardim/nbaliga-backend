@@ -5,21 +5,23 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "seasonstats")
+@IdClass(SeasonStatsKey.class)
 public class SeasonStats implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id
+
 	private Integer season;
-	private Long id;	
+	private Long id;
+	@Id
+	private Integer minutes;
 	private Integer league;
 	private String team;
 	private Integer games;
 	private Integer gamesStarted;
-	private Integer minutes;
 	private Double mpg;
 	private Integer fga;
 	private Integer fgm;
@@ -31,16 +33,20 @@ public class SeasonStats implements Serializable {
 	private Integer ftm;
 	private Double ft_;
 	private Integer offensiveRebounds;
+	@Id
 	private Integer rebounds;
 	private Double rpg;
+	@Id
 	private Integer assists;
 	private Double apg;
+	@Id
 	private Integer steals;
 	private Double spg;
 	private Integer blocks;
 	private Double bpg;
 	private Integer turnovers;
 	private Double tpg;
+	@Id
 	private Integer points;
 	private Double ppg;
 	private Integer fouls;

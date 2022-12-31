@@ -239,7 +239,9 @@ public class TeamDTO implements Serializable {
 	public TeamDTO(Team entity, Set<Player> players, Set<DraftPicks> picks) {
 		this(entity);
 		players.forEach(play -> this.players.add(new PlayerDTO(play)));
+
 		picks.forEach(pick -> this.picks.add(new DraftPicksDTO(pick)));
+
 	}
 
 	// métodos personalizados

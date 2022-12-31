@@ -31,7 +31,5 @@ public class TeamService {
 		List<Team> teams = teamRepository.listAll();
 		return teams.stream().map(x -> new TeamDTO(x)).collect(Collectors.toList());
 	}
-	
-	
 
 }

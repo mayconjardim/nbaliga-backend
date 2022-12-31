@@ -9,7 +9,7 @@ public class StandingsDTO implements Serializable {
 
 	private Long id;
 	private String name;
-	private String city;
+	private String cityName;
 	private Integer streak;
 	private Integer homeWins;
 	private Integer homeLosses;
@@ -27,12 +27,12 @@ public class StandingsDTO implements Serializable {
 	public StandingsDTO() {
 	}
 
-	public StandingsDTO(Long id, String name, String city, Integer streak, Integer homeWins, Integer homeLosses,
+	public StandingsDTO(Long id, String name, String cityName, Integer streak, Integer homeWins, Integer homeLosses,
 			Integer roadWins, Integer roadLosses, Double win_, Integer points, Integer allowedPoints, Double gb,
 			Double confGb, Integer divRank, Integer confRank, String conference) {
 		this.id = id;
 		this.name = name;
-		this.city = city;
+		this.cityName = cityName;
 		this.streak = streak;
 		this.homeWins = homeWins;
 		this.homeLosses = homeLosses;
@@ -51,7 +51,7 @@ public class StandingsDTO implements Serializable {
 	public StandingsDTO(Team entity) {
 		id = entity.getId();
 		name = entity.getName();
-		city = entity.getCity();
+		cityName = entity.getCityName();
 		streak = entity.getStreak();
 		homeWins = entity.getHomeWins();
 		homeLosses = entity.getHomeLosses();
@@ -68,7 +68,7 @@ public class StandingsDTO implements Serializable {
 	}
 
 	public String getTeamName() {
-		return city + " " + name;
+		return cityName + " " + name;
 	}
 
 	public Integer getTotalWins() {
@@ -132,11 +132,11 @@ public class StandingsDTO implements Serializable {
 	}
 
 	public String getCity() {
-		return city;
+		return cityName;
 	}
 
 	public void setCity(String city) {
-		this.city = city;
+		this.cityName = city;
 	}
 
 	public Integer getStreak() {

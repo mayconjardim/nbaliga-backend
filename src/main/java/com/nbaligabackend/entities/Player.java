@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -101,12 +102,10 @@ public class Player implements Serializable {
 	private Integer optiontype8;
 	private Integer birdyears;
 
-	@OneToMany
-	@JoinColumn(name = "id", referencedColumnName = "id")
+	@OneToMany(mappedBy = "id")
 	private List<SeasonStats> seasonStats = new ArrayList<>();
 
-	@OneToMany
-	@JoinColumn(name = "id", referencedColumnName = "id")
+	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<PlayoffStats> playoffStats = new ArrayList<>();
 
 	public Player() {
@@ -881,6 +880,10 @@ public class Player implements Serializable {
 
 	public List<SeasonStats> getSeasonStats() {
 		return seasonStats;
+	}
+
+	public void setSeasonStats(List<SeasonStats> seasonStats) {
+		this.seasonStats = seasonStats;
 	}
 
 	public List<PlayoffStats> getPlayoffStats() {

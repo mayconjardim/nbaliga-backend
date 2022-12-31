@@ -298,6 +298,27 @@ public class PlayerDTO implements Serializable {
 
 	}
 
+	public double getPointsPerGame() {
+		if (seasonStats.isEmpty()) {
+			return 0.0;
+		}
+		return seasonStats.get(seasonStats.size() - 1).getPpg();
+	}
+
+	public double getRebsPerGame() {
+		if (seasonStats.isEmpty()) {
+			return 0.0;
+		}
+		return seasonStats.get(seasonStats.size() - 1).getRpg();
+	}
+
+	public double getAssistsPerGame() {
+		if (seasonStats.isEmpty()) {
+			return 0.0;
+		}
+		return seasonStats.get(seasonStats.size() - 1).getApg();
+	}
+
 	public Integer getContractLength() {
 		int years = 0;
 		years += (this.contract1 > 0) ? 1 : 0;
@@ -976,7 +997,11 @@ public class PlayerDTO implements Serializable {
 	public List<SeasonStatsDTO> getSeasonStats() {
 		return seasonStats;
 	}
-	
+
+	public void setSeasonStats(List<SeasonStatsDTO> seasonStats) {
+		this.seasonStats = seasonStats;
+	}
+
 	public List<PlayoffStatsDTO> getPlayoffStats() {
 		return playoffStats;
 	}

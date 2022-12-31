@@ -27,8 +27,8 @@ public class SeasonStatsService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<SeasonStatsDTO> findAll() {
-		List<SeasonStats> stats = seasonStatsRepository.findAll();
+	public List<SeasonStatsDTO> findAll(Integer season) {
+		List<SeasonStats> stats = seasonStatsRepository.findAllStats(season);
 		return stats.stream().map(x -> new SeasonStatsDTO(x)).collect(Collectors.toList());
 	}
 

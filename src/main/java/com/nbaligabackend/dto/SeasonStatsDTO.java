@@ -88,6 +88,7 @@ public class SeasonStatsDTO implements Serializable {
 		this.dq = dq;
 		this.doubleDoubles = doubleDoubles;
 		this.tripleDoubles = tripleDoubles;
+
 	}
 
 	public SeasonStatsDTO(SeasonStats entity) {
@@ -126,15 +127,17 @@ public class SeasonStatsDTO implements Serializable {
 		this.dq = entity.getDq();
 		this.doubleDoubles = entity.getDoubleDoubles();
 		this.tripleDoubles = entity.getTripleDoubles();
+
 	}
 
 	// Metodos personalizados
+
 	public Double getFga_() {
 		return this.fga.doubleValue() / this.games;
 	}
 
 	public Double getFgm_() {
-		return this.fgm.doubleValue() / this.games ;
+		return this.fgm.doubleValue() / this.games;
 	}
 
 	public Double get_3pm_() {
@@ -152,18 +155,19 @@ public class SeasonStatsDTO implements Serializable {
 	public Double getFta_() {
 		return this.fta.doubleValue() / this.games;
 	}
-	
+
 	public Double getFouls_() {
-		return this.fouls.doubleValue() / this.games ;
+		return this.fouls.doubleValue() / this.games;
 	}
-	
+
 	public Double getPer() {
-		  double per = (this.fgm.doubleValue() * 85.910 + this.steals * 53.897 + this._3pm * 51.757 + this.ftm * 46.845 +
-		                this.blocks * 39.190 + this.offensiveRebounds * 39.190 + this.assists * 34.677 + 
-		                (this.rebounds - this.offensiveRebounds) * 14.707 - this.fouls * 17.174 - (this.fta - this.ftm) * 20.091 -
-		                (this.fga - this.fgm) * 39.190 - this.turnovers * 43.897) * (1.0 / this.minutes);
-		  return per;
-		}
+		double per = (this.fgm.doubleValue() * 85.910 + this.steals * 53.897 + this._3pm * 51.757 + this.ftm * 46.845
+				+ this.blocks * 39.190 + this.offensiveRebounds * 39.190 + this.assists * 34.677
+				+ (this.rebounds - this.offensiveRebounds) * 14.707 - this.fouls * 17.174
+				- (this.fta - this.ftm) * 20.091 - (this.fga - this.fgm) * 39.190 - this.turnovers * 43.897)
+				* (1.0 / this.minutes);
+		return per;
+	}
 
 	// Metodos padrões
 	public Long getId() {
