@@ -5,18 +5,22 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "playoffstats")
+@IdClass(PlayoffStatsKey.class)
 public class PlayoffStats implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private Integer season;
+	@Id
 	private Integer id;
 	private Integer league;
 	private String team;
+	@Id
 	private Integer games;
 	private Integer minutes;
 	private Integer fga;
@@ -26,11 +30,14 @@ public class PlayoffStats implements Serializable {
 	private Integer fta;
 	private Integer ftm;
 	private Integer offensiverebounds;
+	@Id
 	private Integer rebounds;
+	@Id
 	private Integer assists;
 	private Integer steals;
 	private Integer blocks;
 	private Integer turnovers;
+	@Id
 	private Integer points;
 	private Integer fouls;
 	private Integer plusminus;
@@ -280,6 +287,5 @@ public class PlayoffStats implements Serializable {
 		PlayoffStats other = (PlayoffStats) obj;
 		return Objects.equals(id, other.id) && Objects.equals(season, other.season) && Objects.equals(team, other.team);
 	}
-	
-	
+
 }
