@@ -9,7 +9,7 @@ import com.nbaligabackend.entities.SeasonStats;
 
 public interface SeasonStatsRepository extends JpaRepository<SeasonStats, Long> {
 
-	@Query("SELECT obj FROM SeasonStats obj  WHERE obj.season = :season ORDER BY obj.id ASC")
+	@Query("SELECT obj FROM SeasonStats obj WHERE obj.season = :season AND obj.mpg > 5 ORDER BY obj.id ASC")
 	List<SeasonStats> findAllStats(Integer season);
 
 }
