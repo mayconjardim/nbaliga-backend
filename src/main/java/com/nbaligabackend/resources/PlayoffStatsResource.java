@@ -15,24 +15,14 @@ import com.nbaligabackend.services.PlayoffStatsService;
 @RestController
 @RequestMapping(value = "/offstats")
 public class PlayoffStatsResource {
-	
+
 	@Autowired
 	private PlayoffStatsService playoffStatsService;
-		
-	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<PlayoffStatsDTO> findById(@PathVariable long id) throws Exception {
-		PlayoffStatsDTO dto = playoffStatsService.findById(id);
-		return ResponseEntity.ok().body(dto);
-	}
 
-	@GetMapping
+	@GetMapping(value = "/{season}")
 	public ResponseEntity<List<PlayoffStatsDTO>> findAll(@PathVariable Integer season) {
 		List<PlayoffStatsDTO> stats = playoffStatsService.findAll(season);
 		return ResponseEntity.ok().body(stats);
 	}
-
-	
-	
 
 }
