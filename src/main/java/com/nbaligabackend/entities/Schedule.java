@@ -5,16 +5,20 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "schedule")
+@IdClass(ScheduleKey.class)
 public class Schedule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Integer day;
+	@Id
 	private String home;
+	@Id
 	private String away;
 	private Integer league;
 	private Integer type;
