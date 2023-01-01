@@ -27,8 +27,8 @@ public class PlayoffStatsResource {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<PlayoffStatsDTO>> findAll() {
-		List<PlayoffStatsDTO> stats = playoffStatsService.findAll();
+	public ResponseEntity<List<PlayoffStatsDTO>> findAll(@PathVariable Integer season) {
+		List<PlayoffStatsDTO> stats = playoffStatsService.findAll(season);
 		return ResponseEntity.ok().body(stats);
 	}
 

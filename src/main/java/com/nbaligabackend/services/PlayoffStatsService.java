@@ -27,8 +27,8 @@ public class PlayoffStatsService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<PlayoffStatsDTO> findAll() {
-		List<PlayoffStats> stats = playoffStatsRepository.findAll();
+	public List<PlayoffStatsDTO> findAll(Integer season) {
+		List<PlayoffStats> stats = playoffStatsRepository.findAllStats(season);
 		return stats.stream().map(x -> new PlayoffStatsDTO(x)).collect(Collectors.toList());
 	}
 
