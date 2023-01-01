@@ -1,18 +1,12 @@
-package com.nbaligabackend.entities;
+package com.nbaligabackend.dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.nbaligabackend.entities.Playoffs;
 
-@Entity
-@Table(name = "playoffs")
-public class Playoffs implements Serializable {
+public class PlayoffsDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	private Long seriesId;
 	private Integer league;
 	private Boolean complete;
@@ -21,10 +15,10 @@ public class Playoffs implements Serializable {
 	private Integer wins1;
 	private Integer wins2;
 
-	public Playoffs() {
+	public PlayoffsDTO() {
 	}
 
-	public Playoffs(Long seriesId, Integer league, Boolean complete, String team1, String team2, Integer wins1,
+	public PlayoffsDTO(Long seriesId, Integer league, Boolean complete, String team1, String team2, Integer wins1,
 			Integer wins2) {
 		super();
 		this.seriesId = seriesId;
@@ -34,6 +28,16 @@ public class Playoffs implements Serializable {
 		this.team2 = team2;
 		this.wins1 = wins1;
 		this.wins2 = wins2;
+	}
+
+	public PlayoffsDTO(Playoffs entity) {
+		this.seriesId = entity.getSeriesId();
+		this.league = entity.getLeague();
+		this.complete = entity.getComplete();
+		this.team1 = entity.getTeam1();
+		this.team2 = entity.getTeam2();
+		this.wins1 = entity.getWins1();
+		this.wins2 = entity.getWins2();
 	}
 
 	public Long getSeriesId() {
@@ -90,23 +94,6 @@ public class Playoffs implements Serializable {
 
 	public void setWins2(Integer wins2) {
 		this.wins2 = wins2;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(seriesId);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Playoffs other = (Playoffs) obj;
-		return Objects.equals(seriesId, other.seriesId);
 	}
 
 }
