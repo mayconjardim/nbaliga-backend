@@ -40,6 +40,12 @@ public class PlayerResource {
 		return ResponseEntity.ok().body(players);
 	}
 	
+	@GetMapping(value = "/draftclass")
+	public ResponseEntity<List<PlayerDTO>> listDraftClass() {
+		List<PlayerDTO> players = playerService.listDraftClass();		
+		return ResponseEntity.ok().body(players);
+	}
+	
 	@GetMapping
 	public ResponseEntity<Page<PlayerDTO>> findAll(Pageable pageable) {
 		Page<PlayerDTO> players = playerService.findAllPaged(pageable);		

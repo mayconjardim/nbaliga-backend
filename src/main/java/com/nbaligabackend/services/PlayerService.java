@@ -41,6 +41,12 @@ public class PlayerService {
 		List<Player> players = teamRepository.findAll();
 		return players.stream().map(x -> new PlayerBasicDTO(x)).collect(Collectors.toList());
 	}
+	
+	@Transactional(readOnly = true)
+	public List<PlayerDTO> listDraftClass() {
+		List<Player> players = teamRepository.listDraftClass();
+		return players.stream().map(x -> new PlayerDTO(x)).collect(Collectors.toList());
+	}
 
 	@Transactional(readOnly = true)
 	public Page<PlayerDTO> findAllPaged(Pageable pageable) {
