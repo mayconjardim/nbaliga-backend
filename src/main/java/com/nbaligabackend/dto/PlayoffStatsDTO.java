@@ -96,12 +96,26 @@ public class PlayoffStatsDTO implements Serializable {
 
 	// Métodos personalizados
 
+	
+	
 	public Double getPpgPct() {
 		return this.points.doubleValue() / this.games;
 	}
 
 	public Double getRebPct() {
 		return this.rebounds.doubleValue() / this.games;
+	}
+	
+	public Double getOffRebPct() {
+		return this.offensiverebounds.doubleValue() / this.games;
+	}
+	
+	public Double getDeffRebPct() {
+		return (this.rebounds.doubleValue() - this.offensiverebounds) / this.games ;
+	}
+	
+	public Integer getPlusMinusPct() {
+		return this.plusminus / games;
 	}
 
 	public Double getAstPct() {
