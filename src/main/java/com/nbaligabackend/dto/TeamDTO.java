@@ -246,6 +246,10 @@ public class TeamDTO implements Serializable {
 
 	// métodos personalizados
 
+	public Integer getCapSpace() {
+		return 101962352 - this.totalSalary;
+	}
+	
 	public Double getPpg() {
 		if (points > 0) {
 			return points / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()

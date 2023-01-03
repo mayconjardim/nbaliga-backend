@@ -9,7 +9,7 @@ import com.nbaligabackend.entities.HeadToHead;
 
 public interface HeadToHeadRepository extends JpaRepository<HeadToHead, Integer> {
 
-	@Query("SELECT obj FROM HeadToHead obj WHERE obj.teamid = :teamid")
-	List<HeadToHead> findByTeam(Integer teamid);
+	@Query("SELECT distinct obj FROM HeadToHead obj WHERE obj.teamId = teamId")
+	List<HeadToHead> findByTeam(Integer teamId);
 
 }

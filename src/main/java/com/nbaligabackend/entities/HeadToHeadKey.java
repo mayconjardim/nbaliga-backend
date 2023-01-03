@@ -10,7 +10,7 @@ public class HeadToHeadKey implements Serializable {
 	private Integer oppId;
 	private Integer seasonWins;
 	private Integer seasonLosses;
-	
+
 	public HeadToHeadKey() {
 	}
 
@@ -56,7 +56,7 @@ public class HeadToHeadKey implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(oppId, seasonLosses, seasonWins, teamId);
+		return Objects.hash(oppId, teamId);
 	}
 
 	@Override
@@ -68,9 +68,7 @@ public class HeadToHeadKey implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		HeadToHeadKey other = (HeadToHeadKey) obj;
-		return Objects.equals(oppId, other.oppId) && Objects.equals(seasonLosses, other.seasonLosses)
-				&& Objects.equals(seasonWins, other.seasonWins) && Objects.equals(teamId, other.teamId);
+		return Objects.equals(oppId, other.oppId) && Objects.equals(teamId, other.teamId);
 	}
-	
-	
+
 }
