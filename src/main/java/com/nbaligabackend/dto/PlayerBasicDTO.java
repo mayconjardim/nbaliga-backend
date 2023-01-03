@@ -11,14 +11,6 @@ public class PlayerBasicDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private String name;
-	private Integer height;
-	private Integer weight;
-	private Integer age;
-	private Integer currentteamid;
-	private Integer positionnumber;
-	private String currentrating;
-	private String futurerating;
 	private Integer contract1;
 	private Integer contract2;
 	private Integer contract3;
@@ -30,36 +22,20 @@ public class PlayerBasicDTO implements Serializable {
 	public PlayerBasicDTO() {
 	}
 
-	public PlayerBasicDTO(Long id, String name, Integer height, Integer weight, Integer age, Integer currentteamid,
-			Integer positionnumber, String currentrating, String futurerating, Integer contract1, Integer contract2,
-			Integer contract3, Integer contract4, Integer contract5) {
+	public PlayerBasicDTO(Long id, Integer contract1, Integer contract2, Integer contract3, Integer contract4,
+			Integer contract5) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.height = height;
-		this.weight = weight;
-		this.age = age;
-		this.currentteamid = currentteamid;
-		this.positionnumber = positionnumber;
-		this.currentrating = currentrating;
-		this.futurerating = futurerating;
 		this.contract1 = contract1;
 		this.contract2 = contract2;
 		this.contract3 = contract3;
 		this.contract4 = contract4;
 		this.contract5 = contract5;
+
 	}
 
 	public PlayerBasicDTO(Player entity) {
 		id = entity.getId();
-		name = entity.getName();
-		height = entity.getHeight();
-		weight = entity.getWeight();
-		age = entity.getAge();
-		currentteamid = entity.getCurrentteamid();
-		positionnumber = entity.getPositionnumber();
-		currentrating = entity.getCurrentrating();
-		futurerating = entity.getFuturerating();
 		contract1 = entity.getContract1();
 		contract2 = entity.getContract2();
 		contract3 = entity.getContract3();
@@ -110,70 +86,6 @@ public class PlayerBasicDTO implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getHeight() {
-		return height;
-	}
-
-	public void setHeight(Integer height) {
-		this.height = height;
-	}
-
-	public Integer getWeight() {
-		return weight;
-	}
-
-	public void setWeight(Integer weight) {
-		this.weight = weight;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-	public Integer getCurrentteamid() {
-		return currentteamid;
-	}
-
-	public void setCurrentteamid(Integer currentteamid) {
-		this.currentteamid = currentteamid;
-	}
-
-	public Integer getPositionnumber() {
-		return positionnumber;
-	}
-
-	public void setPositionnumber(Integer positionnumber) {
-		this.positionnumber = positionnumber;
-	}
-
-	public String getCurrentrating() {
-		return currentrating;
-	}
-
-	public void setCurrentrating(String currentrating) {
-		this.currentrating = currentrating;
-	}
-
-	public String getFuturerating() {
-		return futurerating;
-	}
-
-	public void setFuturerating(String futurerating) {
-		this.futurerating = futurerating;
 	}
 
 	public Integer getContract1() {

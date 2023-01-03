@@ -289,6 +289,7 @@ public class PlayerDTO implements Serializable {
 		this.optiontype7 = entity.getOptiontype7();
 		this.optiontype8 = entity.getOptiontype8();
 		this.birdyears = entity.getBirdyears();
+		entity.getSeasonStats().forEach(stat -> this.seasonStats.add(new SeasonStatsDTO(stat)));
 	}
 
 	public PlayerDTO(Player entity, List<SeasonStats> seasonStats, List<PlayoffStats> playoffStats) {

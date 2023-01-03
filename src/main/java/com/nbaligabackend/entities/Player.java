@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -102,10 +101,10 @@ public class Player implements Serializable {
 	private Integer optiontype8;
 	private Integer birdyears;
 
-	@OneToMany(mappedBy = "id")
+	@OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
 	private List<SeasonStats> seasonStats = new ArrayList<>();
 
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "id")
 	private List<PlayoffStats> playoffStats = new ArrayList<>();
 
 	public Player() {

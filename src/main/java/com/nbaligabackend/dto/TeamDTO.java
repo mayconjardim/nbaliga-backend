@@ -239,9 +239,7 @@ public class TeamDTO implements Serializable {
 	public TeamDTO(Team entity, Set<Player> players, Set<DraftPicks> picks) {
 		this(entity);
 		players.forEach(play -> this.players.add(new PlayerDTO(play)));
-
 		picks.forEach(pick -> this.picks.add(new DraftPicksDTO(pick)));
-
 	}
 
 	// métodos personalizados
@@ -249,7 +247,7 @@ public class TeamDTO implements Serializable {
 	public Integer getCapSpace() {
 		return 101962352 - this.totalSalary;
 	}
-	
+
 	public Double getPpg() {
 		if (points > 0) {
 			return points / (homeWins.doubleValue() + homeLosses.doubleValue() + roadWins.doubleValue()
