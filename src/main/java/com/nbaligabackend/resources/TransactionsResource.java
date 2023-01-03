@@ -3,8 +3,6 @@ package com.nbaligabackend.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +21,11 @@ public class TransactionsResource {
 		
 	
 	@GetMapping
-	public ResponseEntity<Page<TransactionsDTO>> listAll(Pageable pageable) {
-		Page<TransactionsDTO> transactions = transactionsService.listAll(pageable);		
+	public ResponseEntity<List<TransactionsDTO>> listAll( ) {
+		List<TransactionsDTO> transactions = transactionsService.listAll();		
 		return ResponseEntity.ok().body(transactions);
 	}
-	
+		
 	@GetMapping(value = "/{team}")
 	public ResponseEntity<List<TransactionsDTO>> findByTeam(@PathVariable String team) {
 		List<TransactionsDTO> transactions = transactionsService.findByTeam(team);		

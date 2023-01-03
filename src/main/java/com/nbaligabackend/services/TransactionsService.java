@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,19 +16,17 @@ public class TransactionsService {
 
 	@Autowired
 	private TransactionsRepository transactionsRepository;
-	
+
 	@Transactional(readOnly = true)
-	public Page<TransactionsDTO> listAll(Pageable pageable) {
-		Page<Transactions> transactionss = transactionsRepository.listAll(pageable);
-		return transactionss.map(x -> new TransactionsDTO(x));
+	public List<TransactionsDTO> listAll() {
+		List<Transactions> transactionss = transactionsRepository.listAll();
+		return transactionss.stream().map(x -> new TransactionsDTO(x)).collect(Collectors.toList());
 	}
-	
-	
+
 	@Transactional(readOnly = true)
 	public List<TransactionsDTO> findByTeam(String team) {
 		List<Transactions> transactionss = transactionsRepository.findByTeam(team);
 		return transactionss.stream().map(x -> new TransactionsDTO(x)).collect(Collectors.toList());
 	}
-	
-	
+
 }
