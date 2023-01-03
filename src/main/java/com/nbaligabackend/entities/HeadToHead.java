@@ -5,20 +5,25 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "recordbyopponent")
+@IdClass(HeadToHeadKey.class)
 public class HeadToHead implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Integer teamId;
+	@Id
 	private Integer oppId;
 	private Integer totalWins;
 	private Integer totalLosses;
 	private Integer points;
+	@Id
 	private Integer seasonWins;
+	@Id
 	private Integer seasonLosses;
 	private Integer playoffWins;
 	private Integer playoffLosses;
