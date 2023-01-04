@@ -245,7 +245,7 @@ public class TeamDTO implements Serializable {
 	// métodos personalizados
 
 	public Integer getCapSpace() {
-		return 101962352 - this.totalSalary;
+		return 101962352 - this.totalSalary + 0;
 	}
 
 	public Double getPpg() {
