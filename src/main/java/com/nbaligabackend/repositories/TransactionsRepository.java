@@ -11,7 +11,7 @@ public interface TransactionsRepository extends JpaRepository<Transactions, Long
 
 	
 	@Query("SELECT distinct obj FROM Transactions obj WHERE "
-			+ "obj.league = 1 ORDER BY obj.id DESC LIMIT 20")
+			+ "obj.league = 1 ORDER BY obj.id DESC")
 	List<Transactions> listAll();
 	
 	List<Transactions> findByTeam(String team);
