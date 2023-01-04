@@ -11,6 +11,7 @@ public class PlayerBasicDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	private String name;
 	private Integer contract1;
 	private Integer contract2;
 	private Integer contract3;
@@ -22,10 +23,11 @@ public class PlayerBasicDTO implements Serializable {
 	public PlayerBasicDTO() {
 	}
 
-	public PlayerBasicDTO(Long id, Integer contract1, Integer contract2, Integer contract3, Integer contract4,
-			Integer contract5) {
+	public PlayerBasicDTO(Long id, String name, Integer contract1, Integer contract2, Integer contract3,
+			Integer contract4, Integer contract5) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.contract1 = contract1;
 		this.contract2 = contract2;
 		this.contract3 = contract3;
@@ -36,6 +38,7 @@ public class PlayerBasicDTO implements Serializable {
 
 	public PlayerBasicDTO(Player entity) {
 		id = entity.getId();
+		name = entity.getName();
 		contract1 = entity.getContract1();
 		contract2 = entity.getContract2();
 		contract3 = entity.getContract3();
@@ -86,6 +89,14 @@ public class PlayerBasicDTO implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getContract1() {
