@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.nbaligabackend.dto.TeamBasicDTO;
 import com.nbaligabackend.dto.TeamDTO;
+import com.nbaligabackend.dto.TeamTradeDTO;
 import com.nbaligabackend.entities.Team;
 import com.nbaligabackend.repositories.TeamRepository;
 import com.nbaligabackend.services.exceptions.ResourceNotFoundException;
@@ -28,10 +28,10 @@ public class TeamService {
 	}
 	
 	@Transactional(readOnly = true)
-	public TeamBasicDTO findByBasicId(Long id) throws Exception {
+	public TeamTradeDTO findByBasicId(Long id) throws Exception {
 		Optional<Team> obj = teamRepository.findById(id);
 		Team entity = obj.orElseThrow(() -> new ResourceNotFoundException("Time não encontrado"));
-		return new TeamBasicDTO(entity, entity.getPlayers(), entity.getPicks());
+		return new TeamTradeDTO(entity, entity.getPlayers(), entity.getPicks());
 	}
 
 	@Transactional(readOnly = true)
