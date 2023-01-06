@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nbaligabackend.dto.TeamBasicDTO;
 import com.nbaligabackend.dto.TeamDTO;
 import com.nbaligabackend.services.TeamService;
 
@@ -24,6 +25,12 @@ public class TeamResource {
 		TeamDTO dto = teamService.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
+	
+	@GetMapping(value = "/basic/{id}")
+	public ResponseEntity<TeamBasicDTO> findByBasicId(@PathVariable long id) throws Exception {
+		TeamBasicDTO dto = teamService.findByBasicId(id);
+		return ResponseEntity.ok().body(dto);
+	}
 
 	@GetMapping
 	public ResponseEntity<List<TeamDTO>> listAll() {
@@ -31,6 +38,4 @@ public class TeamResource {
 		return ResponseEntity.ok().body(team);
 	}
 
-	
-	
 }
