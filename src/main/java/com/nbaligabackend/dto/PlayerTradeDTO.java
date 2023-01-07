@@ -10,6 +10,8 @@ public class PlayerTradeDTO implements Serializable {
 	private Long id;
 	private String firstname;
 	private String lastname;
+	private Integer positionnumber;
+	private String currentteam;
 	private Integer currentteamid;
 	private Integer conractteamid;
 	private String currentrating;
@@ -23,13 +25,15 @@ public class PlayerTradeDTO implements Serializable {
 	public PlayerTradeDTO() {
 	}
 
-	public PlayerTradeDTO(Long id, String firstname, String lastname, Integer currentteamid, Integer conractteamid,
-			String currentrating, String futurerating, Integer contract1, Integer contract2, Integer contract3,
-			Integer contract4, Integer contract5) {
+	public PlayerTradeDTO(Long id, String firstname, String lastname, Integer positionnumber, Integer currentteamid,
+			String currentteam, Integer conractteamid, String currentrating, String futurerating, Integer contract1,
+			Integer contract2, Integer contract3, Integer contract4, Integer contract5) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.positionnumber = positionnumber;
+		this.currentteam = currentteam;
 		this.currentteamid = currentteamid;
 		this.conractteamid = conractteamid;
 		this.currentrating = currentrating;
@@ -45,6 +49,8 @@ public class PlayerTradeDTO implements Serializable {
 		id = entity.getId();
 		firstname = entity.getFirstname();
 		lastname = entity.getLastname();
+		positionnumber = entity.getPositionnumber();
+		currentteam = entity.getCurrentteam();
 		currentteamid = entity.getCurrentteamid();
 		conractteamid = entity.getContractteamid();
 		currentrating = entity.getCurrentrating();
@@ -90,6 +96,22 @@ public class PlayerTradeDTO implements Serializable {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	public Integer getPositionnumber() {
+		return positionnumber;
+	}
+
+	public void setPositionnumber(Integer positionnumber) {
+		this.positionnumber = positionnumber;
+	}
+
+	public String getCurrentteam() {
+		return currentteam;
+	}
+
+	public void setCurrentteam(String currentteam) {
+		this.currentteam = currentteam;
 	}
 
 	public Integer getCurrentteamid() {
